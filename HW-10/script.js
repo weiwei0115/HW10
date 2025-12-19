@@ -69,7 +69,7 @@
 
       gameStarted = false;
       difficultyEl.disabled = false;   // 🔓 解鎖棋力
-
+      gameOverModal.classList.add("hidden");
       clearLog();
       log("新局開始：你是黑棋先手。");
       render();
@@ -410,4 +410,5 @@
   })();
 
   
+
 
