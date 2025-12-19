@@ -20,6 +20,9 @@
     ];
   
     // ===== DOM =====
+    const gameOverModal = document.getElementById("gameOverModal");
+    const gameOverTitle = document.getElementById("gameOverTitle");
+    const gameOverScore = document.getElementById("gameOverScore");
     const boardEl = document.getElementById("board");
     const difficultyEl = document.getElementById("difficulty");
     const restartBtn = document.getElementById("restartBtn");
@@ -183,9 +186,13 @@
   
       if(isGameOver(board)){
         const {black,white} = countScore(board);
-        if(black>white) log(`遊戲結束：你贏了（黑 ${black} : 白 ${white}）`);
-        else if(white>black) log(`遊戲結束：電腦贏了（黑 ${black} : 白 ${white}）`);
-        else log(`遊戲結束：平手（黑 ${black} : 白 ${white}）`);
+      let title = "平手 🤝";
+      if(black > white) title = "你贏了 🎉";
+      else if(white > black) title = "電腦獲勝 😵";
+      gameOverTitle.textContent = title;
+      gameOverScore.textContent = `黑 ${black} : ${white} 白`;
+      gameOverModal.classList.remove("hidden");
+      log(`遊戲結束：${title}（黑 ${black} : 白 ${white}）`);
       }
     }
   
@@ -391,4 +398,5 @@
     }
     function clearLog(){ logArea.innerHTML = ""; }
   })();
+
   
