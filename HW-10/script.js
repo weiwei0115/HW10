@@ -38,7 +38,8 @@
     let turn = BLACK;            // user starts (BLACK)
     let thinking = false;        // lock during animations/AI
     let showHints = true;
-  
+    let gameStarted = false;
+    
     // ===== Init =====
     buildBoardUI();
     resetGame();
@@ -65,10 +66,15 @@
   
       turn = BLACK;
       thinking = false;
+
+      gameStarted = false;
+      difficultyEl.disabled = false;   // 🔓 解鎖棋力
+
       clearLog();
       log("新局開始：你是黑棋先手。");
       render();
       maybeAutoPassOrAIMove(); // in case
+        
     }
   
     function buildBoardUI(){
@@ -213,7 +219,11 @@
   
       await placeAndFlipSequential(r, c, flips, BLACK);
       log(`你下在 (${r+1},${c+1})，翻 ${flips.length} 顆`);
-  
+      if(!gameStarted){
+  gameStarted = true;
+  difficultyEl.disabled = true;   // 🔒 鎖住棋力
+}
+
       endTurn();
     }
   
@@ -400,3 +410,4 @@
   })();
 
   
+
