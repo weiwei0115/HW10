@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>1132676 -HW10</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="card header">
+      <div class="title">
+        <h1>Othello 黑白棋（你：黑先手 / 電腦：白後手）</h1>
+        <div class="sub">基本棋力：最大翻棋數；進階棋力：權重盤面 + 行動力 + Minimax</div>
+      </div>
+
+      <div class="controls">
+        <select id="difficulty">
+          <option value="basic">基本棋力（Greedy）</option>
+          <option value="advanced">進階棋力（Minimax）</option>
+        </select>
+
+        <button id="hintBtn" class="toggle on" type="button">
+          <span class="dot"></span>
+          <span>顯示合法落子</span>
+        </button>
+
+        <button id="restartBtn" type="button">重新開始</button>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card boardCard">
+        <div class="boardWrap">
+          <div id="board" class="board" aria-label="othello board"></div>
+        </div>
+      </section>
+
+      <aside class="card side">
+        <div class="panel">
+          <div class="stat">
+            <div class="k">回合</div>
+            <div class="v">
+              <span id="turnText">黑棋（你）</span>
+              <span id="phasePill" class="pill">等待落子</span>
+            </div>
+          </div>
+
+          <div class="stat">
+            <div class="k">比分</div>
+            <div class="v score">
+              <span class="pill">黑</span><span id="blackScore">2</span>
+              <span class="sep">:</span>
+              <span id="whiteScore">2</span><span class="pill">白</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="log">
+          <h3>對局訊息</h3>
+          <div id="logArea"></div>
+        </div>
+
+        <div class="note">
+          <div><b>現場檢視：</b>立體棋子、翻棋動畫、依序翻棋、合法落子提示、難度切換。</div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
